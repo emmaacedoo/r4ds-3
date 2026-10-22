@@ -42,24 +42,6 @@ state_change <- tbl(con, "state_scores") |>
 ```
 
 ```{r}
-ggplot(score_change, aes(x = rla_change, fill = rla_change > 0)) +
-  geom_histogram(bins = 30) +
-  geom_vline(xintercept = 0, color = "black") +
-  scale_fill_manual(
-    values = c("FALSE" = "steelblue", "TRUE" = "orange"),
-    labels = c("FALSE" = "Zero or negative", "TRUE" = "Positive"),
-    name = "Score change"
-  ) +
-  labs(
-    title = "District reading score changes",
-    subtitle = paste("Districts included:", nrow(score_change)),
-    caption = "Source: Stanford Education Data Archive (SEDA)",
-    x = "Change in reading score",
-    y = "Number of districts"
-  )
-```
-
-```{r}
 ggplot(
   state_change,
   aes(y = reorder(state_name, rla_2023))
